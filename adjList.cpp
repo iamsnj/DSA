@@ -4,23 +4,23 @@ using namespace std;
 struct node
 {
 	int data;
-	struct node *ptr;
+	node *ptr;
 };
  
 struct vertexNode
 {
-	struct node *head;
+	node *head;
 };
  
 struct Graph
 {
 	int v;
-	struct vertexNode *w; 
+	vertexNode *w; 
 };
 
 node* createNode(int val)
 {
-	struct node *newNode = (node*)malloc(sizeof(int));
+	node *newNode = (node*)malloc(sizeof(int));
 	newNode->data = val;
 	newNode->ptr = NULL;
 	return newNode;
@@ -28,7 +28,7 @@ node* createNode(int val)
 
 Graph* createGraph(int n)
 {
-	struct Graph *G = (Graph*)malloc(sizeof(int));
+	Graph *G = (Graph*)malloc(sizeof(int));
 	G->v = n;
 	G->w = new vertexNode[n+1];
 	for(int i = 0; i < n+1; i++)
@@ -53,8 +53,8 @@ int main()
 {
 	int V, E;
 	cin >> V >> E;
-	struct Graph *G = createGraph(V);
-  int a, b;
+	Graph *G = createGraph(V);
+  	int a, b;
 	for(int i = 0; i < E; i++)
 	{
 		cin >> a >> b;
