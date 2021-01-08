@@ -21,18 +21,18 @@ bool isFull(stack *s)
 
 int pop(stack *s)
 {
-    if(!isEmpty(s))
+    if( !isEmpty(s))
     {
         int x = s->A[s->top];
         s->top--;
         return x;
     }
-    else return -1;
+    return -1;
 } 
 
 void push(stack *s, int v)
 {
-    if(!isFull(s))
+    if (!isFull(s))
     {
         s->top++;
         s->A[s->top] = v;
@@ -41,9 +41,10 @@ void push(stack *s, int v)
 
 int topVal(stack *s)
 {
-    if(!isEmpty(s))
+    if (!isEmpty(s)){
         return s->A[s->top];
-    else return -1;
+    }
+    return -1;
 }
 
 int main()
@@ -53,11 +54,11 @@ int main()
     stack s;
     int arr[n];
     // s.A = (int*)malloc(n * sizeof(int)); // initialize the stack
-    for(int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         cin >> arr[i];
         push(&s, arr[i]);
     }
-    cout<<pop(&s);
+    cout << pop(&s);
     return 0;
 }

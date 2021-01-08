@@ -31,8 +31,10 @@ Graph* createGraph(int n)
 	Graph *G = (Graph*)malloc(sizeof(int));
 	G->v = n;
 	G->w = new vertexNode[n+1];
-	for(int i = 0; i < n+1; i++)
+
+	for(int i = 0; i < n+1; i++){
 		G->w[i].head = NULL;
+	}
 	return G;
 }
 
@@ -40,10 +42,10 @@ void adjList(Graph *G, int u, int v)
 {
 	node *newNode2 = createNode(v);
 	node *temp = (node*)malloc(sizeof(int));
-	if(G->w[u].head == NULL)
+
+	if (G->w[u].head == NULL){
 		G->w[u].head = newNode2;
-	else
-	{
+	}else{
 		newNode2->ptr = G->w[u].head;
 		G->w[u].head = newNode2;
 	}
@@ -55,21 +57,22 @@ int main()
 	cin >> V >> E;
 	Graph *G = createGraph(V);
   	int a, b;
-	for(int i = 0; i < E; i++)
+
+	for (int i = 0; i < E; i++)
 	{
 		cin >> a >> b;
 		adjList(G, a, b);
 	}
 	
-	for(int i = 0; i < V; i++)
+	for (int i = 0; i < V; i++)
 	{
-		cout<<"V("<<i<<") -> {  ";
-		while(G->w[i].head != NULL)
+		cout << "V(" << i << ") -> {  ";
+		while (G->w[i].head != NULL)
 		{
 			cout << G->w[i].head->data << "  ";
 			G->w[i].head = G->w[i].head->ptr;
 		}
-		cout<<"}\n";
+		cout << "}\n";
 	}
 }
 
